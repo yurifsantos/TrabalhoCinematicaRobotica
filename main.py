@@ -33,8 +33,7 @@ def seleciona_robo():
                 tipo_invalido = False
                 return selecao
 
-        print(
-            f'Tipo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
+        print(f'Tipo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
 
 
 # Função que seleciona a cinemática a ser calculada: direta ou inversa
@@ -58,8 +57,7 @@ def seleciona_cinematica():
             modo_invalido = False
             return modo
         else:
-            print(
-                f'Modo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
+            print(f'Modo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
 
 
 
