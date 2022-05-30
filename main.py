@@ -38,7 +38,7 @@ def seleciona_robo():
 
 # Função que seleciona a cinemática a ser calculada: direta ou inversa
 def seleciona_cinematica():
-    print(f'Por favor, insira qual cinemática deseja calcular:')
+    print(f'\nPor favor, insira qual cinemática deseja calcular:')
 
     # Loop de validação. O terminal continua perguntando qual modo será trabalho até que o usuário insira uma resposta válida.
     modo_invalido = True
@@ -49,11 +49,11 @@ def seleciona_cinematica():
 
         #  Comparação do valor inserido. Caso seja um valor válido, retorna o modo para a variavel que chamou a função.
         if modo == 'D':
-            print(f'Modo Selecionado: Cinemática Direta;')
+            print(f'Modo Selecionado: Cinemática Direta;\n')
             modo_invalido = False
             return modo
         elif modo == 'I':
-            print(f'Modo Selecionado: Cinemática Inversa;')
+            print(f'Modo Selecionado: Cinemática Inversa;\n')
             modo_invalido = False
             return modo
         else:
