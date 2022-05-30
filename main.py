@@ -1,5 +1,6 @@
-import rcn
+import rcn      # Incluindo o módulo rcn (Robótica - Cinemática )
 
+# Dicionário contendo os valores associados ao robôs
 robos = {"RR": 1,
          "RL": 2,
          "RRR": 3,
@@ -10,30 +11,44 @@ robos = {"RR": 1,
          "VVLR": 8}
 
 
+# Função que seleciona o tipo de robo a ser calculado os valores
 def seleciona_robo():
     print(f'Escolha um dos seguintes tipos de robô: ')
+
+    # Imprimindo a lista de tipos de robos do dicionários robos[]
     for tipos in robos:
         print(tipos)
 
-    tipo_invalido = True
+    tipo_invalido = True    # Variavel utilizada para validação do tipo selecionado
+
+    # Loop de validação. O terminal continua perguntando qual tipo será trabalho até que o usuário insira uma resposta válida.
     while(tipo_invalido):
         selecao = input('Tipo a ser trabalhado: ')
+        # Transforma o input em letra maiuscula. Não há necessidade, porém o código foi utilizando letras maiúsculas.
         selecao = selecao.upper()
 
+        # Loop de comparação do valor inserido. Caso o valor seja válido, tipo_invalido vira falso e o while é terminado.
         for tipos in robos:
             if selecao == tipos:
                 tipo_invalido = False
                 return selecao
 
-        print(f'Tipo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
+        print(
+            f'Tipo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
 
+
+# Função que seleciona a cinemática a ser calculada: direta ou inversa
 def seleciona_cinematica():
     print(f'Por favor, insira qual cinemática deseja calcular:')
-    
+
+    # Loop de validação. O terminal continua perguntando qual modo será trabalho até que o usuário insira uma resposta válida.
     modo_invalido = True
     while(modo_invalido):
         modo = input('"D" para Direta e "I" para Inversa: ')
+        # Transforma o input em letra maiuscula. Novamente, não há necessidade, porém exige restruturação caso removido.
         modo = modo.upper()
+
+        #  Comparação do valor inserido. Caso seja um valor válido, retorna o modo para a variavel que chamou a função.
         if modo == 'D':
             print(f'Modo Selecionado: Cinemática Direta;')
             modo_invalido = False
@@ -43,11 +58,18 @@ def seleciona_cinematica():
             modo_invalido = False
             return modo
         else:
-            print(f'Modo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
+            print(
+                f'Modo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
 
 
+
+#  Função que serve para passar os parâmetros para serem calculadas em seus respectivos algoritmos.
+#  Cada algoritmo relacionado a cada tipo de robô deve ser escrito em seus respectivo arquivo na pasta do módulo rcn.
 def passa_parametros(tiporobo):
+    #  Variável que recebe o nome do robo e adquire o valor correspondente a ele no dicionário robos[] para selecionar o caso.
     selecao = robos[tiporobo]
+
+    #  Variável que chama e recebe o resultado do selecionamento do modo de cinemático (direto ou inverso)
     modo_cinematica = seleciona_cinematica()
     match selecao:
         case 1:
@@ -61,18 +83,12 @@ def passa_parametros(tiporobo):
         case 5:
             rcn.trr.calculo_cinematica_trr(modo_cinematica)
         case 6:
-            rcn.vrr.calculo_cinematica_vrr(modo_cinematica)        
+            rcn.vrr.calculo_cinematica_vrr(modo_cinematica)
         case 7:
             rcn.trlr.calculo_cinematica_trlr(modo_cinematica)
         case 8:
             rcn.vvlr.calculo_cinematica_vvlr(modo_cinematica)
 
-
-def adquirir_elos(num_elos):
-    print(f'Por favor, insira os seguintes dados do Robô RR:')
-    l1 = float(input('L1: '))
-    l2 = float(input('L2: '))
-    print(f'Os valores do tamanho dos elos são: \nL1 = {l1} \t\t L2 = {l2}')
 
 if __name__ == '__main__':
     selec = seleciona_robo()
