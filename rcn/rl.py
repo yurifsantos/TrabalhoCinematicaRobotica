@@ -46,7 +46,7 @@ def rl_calculo_inverso(x, y):
     if x == 0:
         t = 90
     else:
-        t = degrees(atan(x/y))
+        t = degrees(atan(y/x))
 
     d = sqrt((pow(x, 2) + pow(y, 2)))
 
