@@ -52,12 +52,20 @@ def rr_calculo_direto(l1, l2, t1, t2):
 
 #  Função que realiza o calculo direto da cinemática do robô e imprime a resposta no terminal.
 def rr_calculo_inverso(l1, l2, x, y):
-    t2_num = pow(x, 2) + pow(y, 2) - pow(l1, 2) - pow(l2, 2) #  Numerador da fração de Teta 2
-    t2_den = 2 * l1 * l2 #  Denominador da fração de Teta 2
-    t2 = degrees(acos(t2_num / t2_den)) #  Transforma-se o valor final de volta para graus.
-
-    t1_num = y *(l1 + l2 * cos(radians(t2))) - x * l2 * sin(radians(t2)) #  Numerador da fração de Teta 1
-    t1_den = x *(l1 + l2 * cos(radians(t2))) + y * l2 * sin(radians(t2)) #  Denominador da fração de Teta 1
-    t1 = degrees(atan(t1_num / t1_den)) #  Transforma-se o valor final de volta para graus.
-
+    try:
+        t2_num = pow(x, 2) + pow(y, 2) - pow(l1, 2) - pow(l2, 2) #  Numerador da fração de Teta 2
+        t2_den = 2 * l1 * l2 #  Denominador da fração de Teta 2
+        t2 = degrees(acos(t2_num / t2_den)) #  Transforma-se o valor final de volta para graus.
+    except ValueError:
+        print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
+        return
+    
+    try:
+        t1_num = y *(l1 + l2 * cos(radians(t2))) - x * l2 * sin(radians(t2)) #  Numerador da fração de Teta 1
+        t1_den = x *(l1 + l2 * cos(radians(t2))) + y * l2 * sin(radians(t2)) #  Denominador da fração de Teta 1
+        t1 = degrees(atan(t1_num / t1_den)) #  Transforma-se o valor final de volta para graus.
+    except ValueError:
+        print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
+        return
+        
     print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f} \t\tTeta 2: {t2:.2f} ')
