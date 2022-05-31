@@ -55,10 +55,12 @@ def rrr_calculo_direto(l1, l2, l3, t1, t2, t3):
 
 #  Função que realiza o calculo direto da cinemática do robô e imprime a resposta no terminal.
 def rrr_calculo_inverso(l1, l2, l3, x, y, delta):
+    #  Try..Except utilizado para definir que a posição insirida não pode ser alcançada com as medidas inseridas;
     try:
+        #  Numerador da formula do Teta 2
         t2_num = pow((x - l3 * cos(radians(delta))), 2) + pow((y - l3 * sin(radians(delta))), 2) - pow(l1, 2) - pow(l2, 2)
-        t2_den = 2 * l1 * l2
-        t2 = degrees(acos(t2_num / t2_den))
+        t2_den = 2 * l1 * l2 #  Denominador da formula do Teta 2
+        t2 = degrees(acos(t2_num / t2_den)) #  Transforma-se o valor final de volta para graus.
     except ValueError:
         print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
         return
@@ -66,11 +68,11 @@ def rrr_calculo_inverso(l1, l2, l3, x, y, delta):
     try:
         t1_num = (y - l3 * sin(radians(delta))) * (l1 - l2 * cos(radians(t2))) - (x - l3 * cos(radians(delta))) * (l2 * sin(radians(t2)))
         t1_den = (x - l3 * cos(radians(delta))) * (l1 - l2 * cos(radians(t2))) + (y - l3 * sin(radians(delta))) * (l2 * sin(radians(t2)))
-        t1 = degrees(atan(t1_num / t1_den))
+        t1 = degrees(atan(t1_num / t1_den)) #  Transforma-se o valor final de volta para graus.
     except ValueError:
         print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
         return
 
-    t3 = delta - t1 - t2
+    t3 = delta - t1 - t2 #  Transforma-se o valor final de volta para graus.
 
     print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tTeta 2: {t2:.2f}º\t\tTeta 3: {t3:.2f}º')
