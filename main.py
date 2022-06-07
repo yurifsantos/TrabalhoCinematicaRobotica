@@ -1,13 +1,15 @@
 import rcn      # Incluindo o módulo rcn (Robótica - Cinemática )
 
 # Dicionário contendo os valores associados ao robôs
-robos = {"RR": 1,
-         "RL": 2,
-         "RRR": 3,
-         "RLR": 4,
-         "TRR": 5,
-         "TRLR": 6,
-         "VVLR": 7}
+robos = {"RR": rcn.rr.calculo_cinematica_rr,
+         "RL": rcn.rl.calculo_cinematica_rl,
+         "RRR": rcn.rrr.calculo_cinematica_rrr,
+         "RLR": rcn.rlr.calculo_cinematica_rlr,
+         "TRR": rcn.trr.calculo_cinematica_trr,
+         "TRLR": rcn.trlr.calculo_cinematica_trlr,
+         "VVLR": rcn.vvlr.calculo_cinematica_vvlr}
+
+
 
 
 # Função que seleciona o tipo de robo a ser calculado os valores
@@ -63,26 +65,9 @@ def seleciona_cinematica():
 #  Função que serve para passar os parâmetros para serem calculadas em seus respectivos algoritmos.
 #  Cada algoritmo relacionado a cada tipo de robô deve ser escrito em seus respectivo arquivo na pasta do módulo rcn.
 def passa_parametros(tiporobo):
-    #  Variável que recebe o nome do robo e adquire o valor correspondente a ele no dicionário robos[] para selecionar o caso.
-    selecao = robos[tiporobo]
-
     #  Variável que chama e recebe o resultado do selecionamento do modo de cinemático (direto ou inverso)
     modo_cinematica = seleciona_cinematica()
-    match selecao:
-        case 1:
-            rcn.rr.calculo_cinematica_rr(modo_cinematica)
-        case 2:
-            rcn.rl.calculo_cinematica_rl(modo_cinematica)
-        case 3:
-            rcn.rrr.calculo_cinematica_rrr(modo_cinematica)
-        case 4:
-            rcn.rlr.calculo_cinematica_rlr(modo_cinematica)
-        case 5:
-            rcn.trr.calculo_cinematica_trr(modo_cinematica)
-        case 6:
-            rcn.trlr.calculo_cinematica_trlr(modo_cinematica)
-        case 7:
-            rcn.vvlr.calculo_cinematica_vvlr(modo_cinematica)
+    robos[tiporobo](modo_cinematica)
 
 
 if __name__ == '__main__':
