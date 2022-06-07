@@ -10,8 +10,6 @@ robos = {"RR": rcn.rr.calculo_cinematica_rr,
          "VVLR": rcn.vvlr.calculo_cinematica_vvlr}
 
 
-
-
 # Função que seleciona o tipo de robo a ser calculado os valores
 def seleciona_robo():
     print(f'Escolha um dos seguintes tipos de robô: ')
