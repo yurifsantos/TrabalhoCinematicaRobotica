@@ -17,22 +17,14 @@ def seleciona_robo():
     print(f'Escolha um dos seguintes tipos de robô: ')
 
     # Imprimindo a lista de tipos de robos do dicionários robos[]
-    for tipos in robos:
-        print(tipos)
-
-    tipo_invalido = True    # Variavel utilizada para validação do tipo selecionado
+    print(*robos.keys())
 
     # Loop de validação. O terminal continua perguntando qual tipo será trabalho até que o usuário insira uma resposta válida.
-    while(tipo_invalido):
-        selecao = input('Tipo a ser trabalhado: ')
-        # Transforma o input em letra maiuscula. Não há necessidade, porém o código foi utilizando letras maiúsculas.
-        selecao = selecao.upper()
+    while(1):
+        selecao = input('Tipo a ser trabalhado: ').upper()
 
-        # Loop de comparação do valor inserido. Caso o valor seja válido, tipo_invalido vira falso e o while é terminado.
-        for tipos in robos:
-            if selecao == tipos:
-                tipo_invalido = False
-                return selecao
+        if selecao in robos.keys():
+            return selecao
 
         print(f'Tipo selecionado inválido! Favor escolher entre os valores da lista a cima.\n')
 
@@ -65,10 +57,7 @@ def seleciona_cinematica():
 #  Função que serve para passar os parâmetros para serem calculadas em seus respectivos algoritmos.
 #  Cada algoritmo relacionado a cada tipo de robô deve ser escrito em seus respectivo arquivo na pasta do módulo rcn.
 def passa_parametros(tiporobo):
-    #  Variável que chama e recebe o resultado do selecionamento do modo de cinemático (direto ou inverso)
-    modo_cinematica = seleciona_cinematica()
-    robos[tiporobo](modo_cinematica)
-
+    robos[tiporobo](seleciona_cinematica())
 
 if __name__ == '__main__':
     selec = seleciona_robo()
