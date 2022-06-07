@@ -6,9 +6,8 @@ robos = {"RR": 1,
          "RRR": 3,
          "RLR": 4,
          "TRR": 5,
-         "VRR": 6,
-         "TRLR": 7,
-         "VVLR": 8}
+         "TRLR": 6,
+         "VVLR": 7}
 
 
 # Função que seleciona o tipo de robo a ser calculado os valores
@@ -81,10 +80,8 @@ def passa_parametros(tiporobo):
         case 5:
             rcn.trr.calculo_cinematica_trr(modo_cinematica)
         case 6:
-            rcn.vrr.calculo_cinematica_vrr(modo_cinematica)
-        case 7:
             rcn.trlr.calculo_cinematica_trlr(modo_cinematica)
-        case 8:
+        case 7:
             rcn.vvlr.calculo_cinematica_vvlr(modo_cinematica)
 
 
