@@ -64,7 +64,6 @@ def trr_calculo_inverso(l1, l2, l3, x, y, z):
         t3 = degrees(acos(t3_num / t3_den)) #  Transforma-se o valor final de volta para graus.
     except ValueError:
         print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
-        print('debug 1')
         return
 
     try:
@@ -74,7 +73,6 @@ def trr_calculo_inverso(l1, l2, l3, x, y, z):
         t2 = degrees(atan(t2_num / t2_den)) #  Transforma-se o valor final de volta para graus.
     except ValueError:
         print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
-        print('debug 2')
         return
 
     if x == 0:
@@ -82,4 +80,7 @@ def trr_calculo_inverso(l1, l2, l3, x, y, z):
     else:
         t1 = degrees(atan(y/x))
 
-    print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tTeta 2: {t2:.2f}º\t\tTeta 3: {t3:.2f}º')
+    if t1 < 0 or t2 < 0 or t3 < 0:
+        print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
+    else:
+        print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tTeta 2: {t2:.2f}º\t\tTeta 3: {t3:.2f}º')

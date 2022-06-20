@@ -68,4 +68,7 @@ def rr_calculo_inverso(l1, l2, x, y):
         print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
         return
         
-    print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f} \t\tTeta 2: {t2:.2f} ')
+    if t1 < 0 or t2 < 0:
+        print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
+    else:
+        print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f} \t\tTeta 2: {t2:.2f} ')

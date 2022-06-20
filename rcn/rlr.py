@@ -69,5 +69,7 @@ def rlr_calculo_inverso(l3, x, y, delta):
         return
 
     t3 = delta - t1 #  Transforma-se o valor final de volta para graus.
-
-    print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tElo 2: {l2:.2f}\t\tTeta 3: {t3:.2f}º')
+    if t1 < 0 or t3 < 0:
+        print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
+    else:
+        print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tElo 2: {l2:.2f}\t\tTeta 3: {t3:.2f}º')

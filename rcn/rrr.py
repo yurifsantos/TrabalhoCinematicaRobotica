@@ -75,4 +75,7 @@ def rrr_calculo_inverso(l1, l2, l3, x, y, delta):
 
     t3 = delta - t1 - t2 #  Transforma-se o valor final de volta para graus.
 
-    print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tTeta 2: {t2:.2f}º\t\tTeta 3: {t3:.2f}º')
+    if t1 < 0 or t2 < 0 or t3 < 0:
+        print(f'Desculpe, porém a posição inserida não é possível de ser alcançada.')
+    else:
+        print(f'Para chegar no ponto desejado, o robô utiliza os seguintes parâmetros:\nTeta 1: {t1:.2f}º \t\tTeta 2: {t2:.2f}º\t\tTeta 3: {t3:.2f}º')
